@@ -1,6 +1,6 @@
 # Greenlight RESTful API
 
-## Folders
+## Skeleton structure for our project
 
 * The **bin** directory will contain out compiled application binaries, ready for deployment to a production server.
 
@@ -16,3 +16,35 @@
 
 * The **Makefile** will contain recipes for automating common administrative tasks - like auditing our Go code, building binaries, and executing database migrations.
 
+## Running application
+For running application open terminal use the go run command to compile and execute the code in the cmd/api package.
+```
+$ go run ./cmd/api
+Hello World!
+```
+
+## Endpoints
+
+| URL Pattern     |  Handler     | Action                       |
+|:----------------|:------------:|-----------------------------:|
+| /v1/healthcheck |  healthcheck | Show application information |
+
+## Running application
+For running application open terminal use the go run command to compile and execute the code in the cmd/api package.
+```
+$ go run ./cmd/api
+2021/05/10 20:08:47 starting development server on :4000
+```
+
+## Get healthcheck endpoint
+```
+$ curl -i localhost:4000/v1/healthcheck
+HTTP/1.1 200 OK
+Date: Tue, 11 May 2021 00:12:18 GMT
+Content-Length: 58
+Content-Type: text/plain; charset=utf-8
+
+status: available
+environment: development
+version: 0.0.1
+```
