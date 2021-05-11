@@ -29,7 +29,7 @@ Hello World!
 |:----------------|:------------:|-----------------------------:|
 | /v1/healthcheck |  healthcheck | Show application information |
 
-## Running application
+## Running application without parameters
 For running application open terminal use the go run command to compile and execute the code in the cmd/api package.
 ```
 $ go run ./cmd/api
@@ -46,5 +46,24 @@ Content-Type: text/plain; charset=utf-8
 
 status: available
 environment: development
+version: 0.0.1
+```
+
+## Running application with parameters
+For running application open terminal use the go run command to compile and execute the code in the cmd/api package.
+```
+$ go run ./cmd/api -port=3030 -env=production
+2021/05/10 20:15:34 starting production server on :3030
+```
+## Get healthcheck endpoint
+```
+curl -i localhost:3030/v1/healthcheck
+HTTP/1.1 200 OK
+Date: Tue, 11 May 2021 00:15:48 GMT
+Content-Length: 57
+Content-Type: text/plain; charset=utf-8
+
+status: available
+environment: production
 version: 0.0.1
 ```
