@@ -3,9 +3,6 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"strconv"
-
-	"github.com/julienschmidt/httprouter"
 )
 
 // Add a createMovieHandler for the "POST /v1/movies" endpoint. For now we simply
@@ -23,7 +20,7 @@ func (app *application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 	// When httprouter is parsing a request, any interpolated URL parameters will be
 	// stored in the request context. We can use the ParamsFromContext() function to
 	// retrieve a slice containing these parameter names and values.
-	params := httprouter.ParamsFromContext(r.Context())
+	//params := httprouter.ParamsFromContext(r.Context())
 
 	// We can then use the ByName() method to get the value of the "id" parameter from
 	// the slice. In our project all movies will have a unique positive integer ID, but
@@ -31,7 +28,13 @@ func (app *application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 	// base 10 interger (with a bit size of 64). If the parameter couldn't be converted,
 	// or is less than 1, we known the ID is invalid so we use the http.NotFound()
 	// function to return a 404 Not Found response.
-	id, err := strconv.ParseInt(params.ByName("id"), 10, 64)
+	/*
+		id, err := strconv.ParseInt(params.ByName("id"), 10, 64)
+		if err != nil || id < 1 {
+			http.NotFound(w, r)
+			return
+		}*/
+	id, err := app.readIDParam(r)
 	if err != nil || id < 1 {
 		http.NotFound(w, r)
 		return
