@@ -129,3 +129,19 @@ Content-Type: text/plain; charset=utf-8
 
 show the details of a movie 1
 ```
+
+## Unsupported HTTP method
+You might also want to try making some requests for a particular URL using an unsupported HTTP method. The httprouter packge has automatically sent a 405 Method Not Allowed response for us, including an Allow header which lists the HTTP methods that are supported for the endpoint.
+
+### POST a healthcheck
+```
+curl -i -X localhost:4000/v1/healthcheck/
+HTTP/1.1 405 Method Not Allowed
+Allow: GET, OPTIONS
+Content-Type: text/plain; charset=utf-8
+X-Content-Type-Options: text/plain nosniff
+Date: Tue, 11 May 2021 00:15:48 GMT
+Content-Length: 19
+
+Method Not Allowed
+```
