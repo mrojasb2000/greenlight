@@ -28,12 +28,7 @@ func (app *application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 	// base 10 interger (with a bit size of 64). If the parameter couldn't be converted,
 	// or is less than 1, we known the ID is invalid so we use the http.NotFound()
 	// function to return a 404 Not Found response.
-	/*
-		id, err := strconv.ParseInt(params.ByName("id"), 10, 64)
-		if err != nil || id < 1 {
-			http.NotFound(w, r)
-			return
-		}*/
+
 	id, err := app.readIDParam(r)
 	if err != nil || id < 1 {
 		http.NotFound(w, r)
