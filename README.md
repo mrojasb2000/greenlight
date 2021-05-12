@@ -88,3 +88,44 @@ status: available
 environment: production
 version: 0.0.1
 ```
+
+## Implementation movies actions
+```
+$ go run ./cmd/api
+2021/05/10 20:15:34 starting production server on :4000
+```
+
+### Get healthcheck endpoint
+```
+curl -i localhost:4000/v1/healthcheck
+HTTP/1.1 200 OK
+Date: Tue, 11 May 2021 00:15:48 GMT
+Content-Length: 57
+Content-Type: text/plain; charset=utf-8
+
+status: available
+environment: production
+version: 0.0.1
+```
+
+### Post movies endpoint
+```
+curl -i -X POST localhost:4000/v1/movies
+HTTP/1.1 200 OK
+Date: Tue, 11 May 2021 00:15:48 GMT
+Content-Length: 57
+Content-Type: text/plain; charset=utf-8
+
+create a new movie
+```
+
+### Get a movie endpoint
+```
+curl -i  localhost:4000/v1/movies/1
+HTTP/1.1 200 OK
+Date: Tue, 11 May 2021 00:15:48 GMT
+Content-Length: 57
+Content-Type: text/plain; charset=utf-8
+
+show the details of a movie 1
+```
