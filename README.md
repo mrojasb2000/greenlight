@@ -135,7 +135,7 @@ You might also want to try making some requests for a particular URL using an un
 
 ### POST a healthcheck
 ```
-curl -i -X localhost:4000/v1/healthcheck/
+curl -i -X POST localhost:4000/v1/healthcheck/
 HTTP/1.1 405 Method Not Allowed
 Allow: GET, OPTIONS
 Content-Type: text/plain; charset=utf-8
@@ -145,3 +145,14 @@ Content-Length: 19
 
 Method Not Allowed
 ```
+
+## Get allowed HTTP method supported
+You can make an OPTIONS request to a specific URL and httprouter will send back a response with an Allowed header detailing the supported HTTP methods.
+
+```
+curl -i -X OPTIONS localhost:4000/v1/healthcheck/
+HTTP/1.1 200 OK
+Allow: GET, OPTIONS
+Date: Tue, 11 May 2021 00:15:48 GMT
+Content-Length: 0
+``` 
