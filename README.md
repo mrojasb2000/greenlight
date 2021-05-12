@@ -25,9 +25,30 @@ Hello World!
 
 ## Endpoints
 
-| URL Pattern     |  Handler     | Action                       |
-|:----------------|:------------:|-----------------------------:|
-| /v1/healthcheck |  healthcheck | Show application information |
+| Method | URL Pattern     |  Handler            | Action                                 |
+|:-------|:----------------|:--------------------|:---------------------------------------|
+| GET    | /v1/healthcheck | healthcheckHandler  | Show application information           |
+| GET    | /v1/movies      | listMoviesHandler   | Show the details of all movies         |
+| POST   | /v1/movies      | createMoviesHandler | Create new movie                       |
+| GET    | /v1/movies/:id  | showMovieHandler    | Show the details of a specific movie   |
+| PUT    | /v1/movies/:id  | editMovieHandler    | Update the details of a specific movie |
+| DELETE | /v1/movies/:id  | deleteMovieHandler  | Delete a specific movie                |
+
+
+| Method | Usage                                                                                                                                         | 
+|:-------|:----------------------------------------------------------------------------------------------------------------------------------------------|
+| GET    | Use for actions that retrieve information only and don't change the state of your application or any data.                                    |
+| POST   | Use for non-idempotent actions that modify state. In the context of a REST API, POST is generally used for actions that create a new resource.|
+| PUT    | Use for idempotent actions that modify the state of a resource at a specific URL. In the context of a REST API, PUT is generally used for actions that replace or update an existing resource. |
+| PATCH  | Use for actions that partially update a resource at a specific URL. It's OK for the action to be either idempotent or non-idempotent. |
+| DELETE | Use for actions that delete a resource at a specific URL. |
+
+
+
+
+
+
+
 
 ## Running application without parameters
 For running application open terminal use the go run command to compile and execute the code in the cmd/api package.
