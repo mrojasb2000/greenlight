@@ -197,9 +197,9 @@ $ gin --appPort 4000 --port 3000 --path ./cmd/api
 ```
 curl -i localhost:3000/v1/healthcheck
 HTTP/1.1 200 OK
-Date: Tue, 11 May 2021 00:15:48 GMT
-Content-Length: 57
-Content-Type: text/plain; charset=utf-8
+Content-Length: 68
+Content-Type: application/json
+Date: Thu, 13 May 2021 21:52:52 GMT
 
 {
   "status": "available",
