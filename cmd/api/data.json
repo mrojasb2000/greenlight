@@ -1,0 +1,11 @@
+{
+    "id": 123,
+    "title": "Casablanca",
+    "runtime": 102,
+    "genes": [
+        "drama",
+        "romance",
+        "war"
+    ],
+    "version": 1
+}

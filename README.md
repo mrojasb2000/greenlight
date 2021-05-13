@@ -156,3 +156,54 @@ Allow: GET, OPTIONS
 Date: Tue, 11 May 2021 00:15:48 GMT
 Content-Length: 0
 ```
+
+## Live reloading Go application
+
+Install gin is a simple command line utility for live-reloading Go web applications. Just run gin in your app directory and your web app will be served with gin as a proxy. gin will automatically recompile your code when it detects a change. Your app will be restarted the next time it receives an HTTP request.
+
+### How to install
+```
+$ go get https://github.com/codegangsta/gin
+```
+
+### Basic usage
+```
+Options:
+    --laddr value, -l value       listening address for the proxy server
+   --port value, -p value        port for the proxy server (default: 3000)
+   --appPort value, -a value     port for the Go web server (default: 3001)
+   --bin value, -b value         name of generated binary file (default: "gin-bin")
+   --path value, -t value        Path to watch files from (default: ".")
+   --build value, -d value       Path to build files from (defaults to same value as --path)
+   --excludeDir value, -x value  Relative directories to exclude
+   --immediate, -i               run the server immediately after it's built
+   --all                         reloads whenever any file changes, as opposed to reloading only on .go file change
+   --godep, -g                   use godep when building
+   --buildArgs value             Additional go build arguments
+   --certFile value              TLS Certificate
+   --keyFile value               TLS Certificate Key
+   --logPrefix value             Setup custom log prefix
+   --notifications               enable desktop notifications
+   --help, -h                    show help
+   --version, -v                 print the version
+```
+
+### Running application
+```
+$ gin --appPort 4000 --port 3000 --path ./cmd/api
+```
+
+### Get healthcheck endpoint with JSON response
+```
+curl -i localhost:3000/v1/healthcheck
+HTTP/1.1 200 OK
+Date: Tue, 11 May 2021 00:15:48 GMT
+Content-Length: 57
+Content-Type: text/plain; charset=utf-8
+
+{
+  "status": "available",
+  "environment": "development",
+  "version": "0.0.1"
+}
+```
