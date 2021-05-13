@@ -20,7 +20,7 @@ func (app *application) showMovieHandler(w http.ResponseWriter, r *http.Request)
 	// When httprouter is parsing a request, any interpolated URL parameters will be
 	// stored in the request context. We can use the ParamsFromContext() function to
 	// retrieve a slice containing these parameter names and values.
-	//params := httprouter.ParamsFromContext(r.Context())
+	// params := httprouter.ParamsFromContext(r.Context())
 
 	// We can then use the ByName() method to get the value of the "id" parameter from
 	// the slice. In our project all movies will have a unique positive integer ID, but
