@@ -5,6 +5,11 @@ import (
 	"net/http"
 )
 
+// The badRequestResponse() method is a wrapper on generic error response.
+func (app *application) badResquestResponse(w http.ResponseWriter, r *http.Request, err error) {
+	app.errorResponse(w, r, http.StatusBadRequest, err.Error())
+}
+
 // The logError() method is a generic helper for logging an error message. Later in the
 // book we'll upgrade this to use structured logging, and record additional information
 // about the request including the HTTP method and URL.

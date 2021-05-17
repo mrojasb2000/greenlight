@@ -16,6 +16,12 @@ type envelope map[string]interface{}
 
 // Change the data parameter to have the type envelope instead of interface{}.
 
+// Initialize a new json.Decoder instance which reads from the request body, and
+// then use the Decode() method to decode the body contents into the input struct.
+// Importantly, notice that when we call Decode() we pass a *pointer* to the input
+// struct as the target decode destination. If there was an error during decoding,
+// we also use our generic errorResponse() helper to send the client a 400 Bad
+// Request response containing the error message.
 func (app *application) readJSON(w http.ResponseWriter, r *http.Request, dst interface{}) error {
 	// Decode the request body into the target destination.
 	err := json.NewDecoder((r.Body)).Decode(dst)
