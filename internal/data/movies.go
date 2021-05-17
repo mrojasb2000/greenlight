@@ -13,7 +13,6 @@ type Movie struct {
 	// still work on this: if the Runtime field has the underlying value 0, then it will
 	// be considered empty and omitted -- and the MarshalJSON() method we just made
 	// won.t be called at all.
-	//Runtime  int32     `json:"runtime,omitempty,string"` // Movie runtime (in minutes)
 	Runtime Runtime  `json:"runtime, omitempty"`
 	Genres  []string `json:"genres,omitempty"` // Slice of geners for the movie (romace, comedy, etc.)
 	Version int32    `json:"version"`          // The version number start 1 and will be incremented each time the movie information is updated

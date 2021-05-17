@@ -207,3 +207,32 @@ Date: Thu, 13 May 2021 21:52:52 GMT
   "version": "0.0.1"
 }
 ```
+
+## Custom format error
+
+### Method Not Found
+```
+curl -i localhost:3000/foo
+HTTP/1.1 404 Not Found
+Content-Length: 58
+Content-Type: application/json
+Date: Thu, 13 May 2021 21:52:52 GMT
+
+{
+  "error": "the requested resource could not be found"
+}
+```
+
+### Method Not Aloowed
+```
+curl -i -X PUT localhost:3000/v1/movies/1
+HTTP/1.1 405 Method Not Allowed
+Allow: GET, OPTIONS
+Content-Length: 66
+Content-Type: application/json
+Date: Thu, 13 May 2021 21:52:52 GMT
+
+{
+  "error": "the PUT method is not supported for this resource"
+}
+```
