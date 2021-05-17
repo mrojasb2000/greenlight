@@ -236,3 +236,23 @@ Date: Thu, 13 May 2021 21:52:52 GMT
   "error": "the PUT method is not supported for this resource"
 }
 ```
+
+## Create new Movie
+
+Create a BODY variable conatining the JSON data that we want to send.
+```
+$ BODY='{"title":"Moana","year":2016,"runtime":107, "genres":["animation","adventure"]}”
+```
+
+Use the -d flag to send the contents of the BODY variable as the HTTP request body.
+
+Note that curl will default to sending a POST request when then -d flag is used.
+```
+curl -i -d "$BODY" localhost:4000/v1/movies
+HTTP/1.1 200 OK
+Date: Mon, 17 May 2021 15:52:26 GMT
+Content-Length: 65
+Content-Type: text/plain; charset=utf-8
+
+{Title:Moana Year:2016 Runtime:107 Genres:[animation adventure]}
+```
