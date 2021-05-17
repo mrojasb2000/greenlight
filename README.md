@@ -223,7 +223,7 @@ Date: Thu, 13 May 2021 21:52:52 GMT
 }
 ```
 
-### Method Not Aloowed
+### Method Not Allowed
 ```
 curl -i -X PUT localhost:3000/v1/movies/1
 HTTP/1.1 405 Method Not Allowed
