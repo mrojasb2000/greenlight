@@ -256,3 +256,70 @@ Content-Type: text/plain; charset=utf-8
 
 {Title:Moana Year:2016 Runtime:107 Genres:[animation adventure]}
 ```
+
+## Read JSON Helper
+
+Send some XML as the request body
+```
+curl -i -d '<?xml version="1.0" encoding="UTF-8"><note><to>Mavro</to></note>' localhost:4000/v1/movies
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+Date: Mon, 17 May 2021 22:30:41 GMT
+Content-Length: 67
+
+{
+        "error": "body contains badly-formated JSON (at character 1)"
+}
+```
+
+Send some malformed JSON (notice the trailing comma)
+```
+curl -i -d '<?xml version="1.0" encoding="UTF-8"><note><to>Mavro</to></note>' localhost:4000/v1/movies
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+Date: Mon, 17 May 2021 22:30:41 GMT
+Content-Length: 67
+
+{
+        "error": "body contains badly-formated JSON (at character 1)"
+}
+```
+
+Send a JSON array instead of an object
+```
+curl -i -d '<?xml version="1.0" encoding="UTF-8"><note><to>Mavro</to></note>' localhost:4000/v1/movies
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+Date: Mon, 17 May 2021 22:30:41 GMT
+Content-Length: 67
+
+{
+        "error": "body contains badly-formated JSON (at character 1)"
+}
+```
+
+Send a numeric 'title' value (instead of string)
+```
+curl -i -d '{"title": 123 }' localhost:4000/v1/movies   
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+Date: Mon, 17 May 2021 22:37:05 GMT
+Content-Length: 74
+
+{
+        "error": "body contains incorrect JSON type for the field \"title\""
+}
+```
+
+Send an empty request body
+```
+curl -i -d '<?xml version="1.0" encoding="UTF-8"><note><to>Mavro</to></note>' localhost:4000/v1/movies
+HTTP/1.1 400 Bad Request
+Content-Type: application/json
+Date: Mon, 17 May 2021 22:30:41 GMT
+Content-Length: 67
+
+{
+        "error": "body contains badly-formated JSON (at character 1)"
+}
+```
