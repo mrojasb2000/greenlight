@@ -347,3 +347,11 @@ curl -d '{"title": "Moana"} :~()' localhost:4000/v1/movies
    "error": "body must only cotain a single JSON value"
 }
 ```
+
+Send request with a very large JSON body
+```
+curl -d @./cmd/api/largefile.json localhost:4000/v1/movies
+{
+   "error": "body must not be large than 1048576 bytes"
+}
+```
