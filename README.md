@@ -323,3 +323,27 @@ Content-Length: 67
         "error": "body contains badly-formated JSON (at character 1)"
 }
 ```
+
+Send an unknown field request body
+```
+curl -d '{"title": "Moana", "rating":"PG"}' localhost:4000/v1/movies
+{
+   "error": "body contains unknown field \"rating\""
+}
+```
+
+Send additional data in the request body
+```
+curl -d '{"title": "Moana"}{"title":"TopGun"}' localhost:4000/v1/movies
+{
+   "error": "body must only cotain a single JSON value"
+}
+```
+
+Send additional data in the request body
+```
+curl -d '{"title": "Moana"} :~()' localhost:4000/v1/movies
+{
+   "error": "body must only cotain a single JSON value"
+}
+```
