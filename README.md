@@ -355,3 +355,28 @@ curl -d @./cmd/api/largefile.json localhost:4000/v1/movies
    "error": "body must not be large than 1048576 bytes"
 }
 ```
+
+Send request with Runtime format "<runtime> mins"
+```
+curl -d '{"title": "Moana", "runtime":"107 mins"}' localhost:4000/v1/movies
+{
+   Title:Moana Year:0 Runtime:107 Genres:[]
+}
+```
+
+Send request with Runtime format "<runtime>"
+```
+curl -d '{"title": "Moana", "runtime":107}' localhost:4000/v1/movies
+{
+   "error": "invalid runtime format"
+}
+```
+
+
+Send request with Runtime format "<runtime> minutes"
+```
+curl -d '{"title": "Moana", "runtime":"107 minutes"}' localhost:4000/v1/movies
+{
+    "error": "invalid runtime format"
+}
+```

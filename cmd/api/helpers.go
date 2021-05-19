@@ -96,7 +96,7 @@ func (app *application) readJSON(w http.ResponseWriter, r *http.Request, dst int
 			// to our handler. At the end of this chapter we'll talk about panicking
 			// versus returning errors, and discuss why it's an appropriate thing to do in
 			// this specific situation.
-		case errors.As(err, &invalidUnmarshalError.Type):
+		case errors.As(err, &invalidUnmarshalError):
 			panic(err)
 
 			// For anything else, return the error message as-is.
@@ -111,8 +111,8 @@ func (app *application) readJSON(w http.ResponseWriter, r *http.Request, dst int
 	// return an io.EOF error. So if we get anything else, we know that there is
 	// additional data in the request body and we return out own custom error message.
 	err = dec.Decode(&struct{}{})
-	if err != nil {
-		return errors.New("body must only cotain a single JSON value")
+	if err != io.EOF {
+		return errors.New("body must only contain a single JSON value")
 	}
 	return nil
 }
