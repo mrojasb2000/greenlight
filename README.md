@@ -488,3 +488,11 @@ CREATE ROLE
 greenlight=# CREATE EXTENSION IF NOT EXISTS citext;
 CREATE EXTENSION
 ```
+
+### Connect to databse greenlight with user greenlight
+```
+psql --host=localhost --dbname=greenlight --username=greenlight
+Password for user greenlight:
+psql (13.3, server 13.2 (Debian 13.2-1.pgdg100+1))
+Type "help" for help
+```
