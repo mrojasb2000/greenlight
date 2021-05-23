@@ -496,3 +496,9 @@ Password for user greenlight:
 psql (13.3, server 13.2 (Debian 13.2-1.pgdg100+1))
 Type "help" for help
 ```
+
+### Add environment variable to $HOME/.profile or $HOME/.bashrc or $HOME/.zshrc
+```
+export GREENLIGHT_DB_DSN='postgres://greenlight:pa55w0rd@localhost/greenlight?sslmode=disable'
+```
+
