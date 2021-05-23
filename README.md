@@ -512,3 +512,10 @@ $ go run ./cmd/api -help
   -port int
         API Server port (default 4000)
 ```
+
+### Using the DSN with psql
+```
+$ psql $GREENLIGHT_DB_DSN
+psql (13.3, server 13.2 (Debian 13.2-1.pgdg100+1))
+Type "help" for help.
+```
