@@ -502,3 +502,13 @@ Type "help" for help
 export GREENLIGHT_DB_DSN='postgres://greenlight:pa55w0rd@localhost/greenlight?sslmode=disable'
 ```
 
+### Get help from command-line api
+```
+$ go run ./cmd/api -help
+  -db-dsn string
+        PostgreSQL DSN (default "postgres://greenlight:pa55w0rd@localhost/greenlight?sslmode=disable")
+  -env string
+        Environment (development|staging|production) (default "development")
+  -port int
+        API Server port (default 4000)
+```
