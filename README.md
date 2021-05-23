@@ -398,3 +398,93 @@ Content-Length: 180
    }
 }
 ```
+
+# Data store
+
+## Database Postgres
+
+### Config Postgres and PgAmin
+ Create docker-compose.yml file
+```
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres_greenlight_container
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+  
+  pgadmin:
+    # container_name: pgadmin_container
+    image: dpage/pgadmin4:5.3
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    volumes:
+       - pgadmin:/root/.pgadmin
+
+    ports:
+      - "${PGADMIN_PORT:-9090}:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+    postgres:
+    pgadmin:
+```
+
+### Running Database Postgres and PgAmin
+```
+$ docker-compose up
+```
+
+### Remove Docker container 
+```
+$ docker-compose down
+```
+
+### Connect to Postgres server
+```
+$ psql -h localhost -p 5432 -U postgres
+```
+
+### Help commands database Postgres
+```
+postgres=#\?
+```
+
+### Create database greenlight
+```
+postgres=# CREATE DATABASE greenlight;
+CREATE DATABASE
+postgres=#\c greenlight
+You are now connected to database "greenlight" as user postgres
+```
+
+### Create user greenlight
+```
+postgres=# CREATE ROLE greenlight WITH LOGIN PASSWORD 'pa55w0rd';
+CREATE ROLE
+```
+
+### Add extension citext
+```
+greenlight=# CREATE EXTENSION IF NOT EXISTS citext;
+CREATE EXTENSION
+```
