@@ -591,7 +591,14 @@ Require DSN parameter from your environment variable.
 $ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN up
 1/u create_movies_table (23.828006ms)
 2/u add_movies_check_constraints (42.078909ms)
-```
+```
+
+### Using the DSN with psql
+```
+$ psql $GREENLIGHT_DB_DSN
+psql (13.3, server 13.2 (Debian 13.2-1.pgdg100+1))
+Type "help" for help.
+```
 
 ### List tables
 ```
