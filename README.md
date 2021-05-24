@@ -592,3 +592,13 @@ $ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN up
 1/u create_movies_table (23.828006ms)
 2/u add_movies_check_constraints (42.078909ms)
 ```
+
+### List tables
+```
+greenlight=> \dt
+                List of relations
+ Schema |       Name        | Type  |   Owner
+--------+-------------------+-------+------------
+ public | movies            | table | greenlight
+ public | schema_migrations | table | greenlight
+```
