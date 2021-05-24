@@ -632,3 +632,22 @@ greenlight=> \d movies
    * "movies_runtime_check" CHECK (runtime >= 0)
    * "movies_year_check" CHECK (year >= 1888 AND year::double precision <= date_part('year'::text, now()))
 ```
+
+### Check current migration version
+If you want to see which migration version your database is currently on you can run the migarte tool's version command.
+```
+$ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN version
+2
+```
+
+### Change migration version
+You can also migrate up or down to a specific version by using to goto command.
+```
+$ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN goto 1
+```
+
+### Down migration version
+You can use the down command ro roll-back by a specific number of migrations.
+```
+$ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN down 1
+```
