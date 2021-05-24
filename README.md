@@ -567,9 +567,26 @@ $ migrate create -seq -ext=.sql -dir=./migrations create_movies_table
 ```
 
 ### Add SQL statement migrations files
-...
+PostgreSQL DDL apply statements sql filename contains .up. pattern
+```
+CREATE TABLE IF NOT EXISTS movies (
+    id bigserial PRIMARY KEY,
+    created_at timestamp(0) with time zone NOT NULL DEFAULT NOW(),
+    title text NOT NULL,
+    year integer NOT NULL,
+    runtime integer NOT NULL,
+    genres text[] NOT NULL,
+    version integer NOT NULL DEFAULT 1
+);
+```
 
-### Running migrations
+PostgreSQL DDL roll back stattements sql filename contains .down. pattern
+```
+DROP TABLE IF EXISTS movies;
+```
+
+### Executing the migrations
+Require DSN parameter from your environment variable.
 ```
 $ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN up
 1/u create_movies_table (23.828006ms)
