@@ -519,3 +519,26 @@ $ psql $GREENLIGHT_DB_DSN
 psql (13.3, server 13.2 (Debian 13.2-1.pgdg100+1))
 Type "help" for help.
 ```
+
+### Custom settings PostgreSQL Engine
+- Maximum Open Connections:
+- Maximum Idle Connections:
+- Maximum Idle Time:
+
+```
+go run ./cmd/api -help                
+  -db-dsn string
+        PostgreSQL DSN (default "postgres://greenlight:pa55w0rd@localhost/greenlight?sslmode=disable")
+  -db-max-idle-conns int
+        PostgreSQL max idle connections (default 25)
+  -db-max-idle-time string
+        PostgreSQL max connection idle time (default "15m")
+  -db-max-open-conns int
+        postgreSQL max open connections (default 25)
+  -env string
+        Environment (development|staging|production) (default "development")
+  -port int
+        API Server port (default 4000)
+```
+
+
