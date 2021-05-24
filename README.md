@@ -565,3 +565,13 @@ $ migrate create -seq -ext=.sql -dir=./migrations create_movies_table
 ... 000001_create_movies_table.down.sql
 ... 000001_create_movies_table.up.sql
 ```
+
+### Add SQL statement migrations files
+...
+
+### Running migrations
+```
+$ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN up
+1/u create_movies_table (23.828006ms)
+2/u add_movies_check_constraints (42.078909ms)
+```
