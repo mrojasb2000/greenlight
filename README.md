@@ -597,8 +597,8 @@ $ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN up
 ```
 greenlight=> \dt
                 List of relations
- Schema |       Name        | Type  |   Owner
---------+-------------------+-------+------------
- public | movies            | table | greenlight
- public | schema_migrations | table | greenlight
+| Schema |       Name        | Type  |   Owner     |
+|:-------|:------------------|:------|:------------|
+| public | movies            | table | greenlight  |
+| public | schema_migrations | table | greenlight  |
 ```
