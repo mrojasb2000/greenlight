@@ -542,3 +542,26 @@ go run ./cmd/api -help
 ```
 
 
+## Migrations
+
+Using migrations to menage your database schema, rather than amnually executing the SQL statements yourself. Each pair of migration files is numbered sequentially, usually 0001, 0002, 0003... or with a Unix timestamp, to indicate the order in which migrations should be applied to a database.
+
+### Install Migration tools
+```
+$ brew install golang-migrate
+```
+
+### Create movies table
+Creating a new movies table in our database, generate a pair of migration file using the migrate create command.
+
+flags:
+* -seq flag inicates that we want to use secuential numbering like 0001, 0002, ... for the migration files.
+* -ext flag indicates that we want to give the migration files the extenson .sql.
+* -dir flag indicates that we want to store the migration files in the ./migration directory.
+* create_movies_table is a description label that we give the migration files to signify their contents.
+
+```
+$ migrate create -seq -ext=.sql -dir=./migrations create_movies_table
+... 000001_create_movies_table.down.sql
+... 000001_create_movies_table.up.sql
+```
