@@ -672,3 +672,54 @@ Once you force the version, the database is considered 'clean' and you should be
 ```
 $ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN force 1
 ```
+
+### Running migrations on application startup
+If you want, it is also posible to use the golang-migrate/migrate Go package to automatically execute your databse migrations on application start up.
+
+```
+package main
+
+import (
+  "context"
+  "database/sql"
+  "flag"
+  "fmt"
+  "log"
+  "net/http"
+  "os"
+  "time"
+
+  "github.com/golang-migrate/migrate/v4"
+  "github.com/golang-migrate/migrate/v4/database/postgres"
+  "github.com/golang-migrate/migrate/v4/source/file"
+
+  _ "github.com/lib/v4"
+)
+
+func main() {
+  db, err := openDB(cfg)
+  if err != nil {
+    logger.Fatal(err)
+  }
+  defer db.Close()
+
+  logger.Printf("database connection pool established")
+
+  migrationDriver, err := postgres.WithInstance(db, &postgres.Confgi{})
+  if err != nil {
+    logger.PrintFatal(err, nil)
+  }
+
+  migrator, err := migrate.NewWithDatabaseInstance("file:///path/to/you/migrations", "postgres", migrationDriver)
+  if err != nil {
+    logger.PrintFatal(err, nil)
+  }
+
+  err = migrator.Up()
+  if err != nil && err != migrate.ErrnoChange {
+    logger.PrintFatal(err, nil)
+  }
+  logger.Printf("database migrations applied")
+  ...
+}
+```
