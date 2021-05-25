@@ -651,3 +651,13 @@ You can use the down command ro roll-back by a specific number of migrations.
 ```
 $ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN down 1
 ```
+
+### Roll-back all migrations
+```
+$ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN down
+Are you sure you want to apply all down migrations? [y/N]
+y
+Applying all down migrations
+2/d add_movies_check_constraints (29.759654ms)
+1/d create_movies_table (50.684902ms)
+```
