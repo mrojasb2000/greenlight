@@ -1,10 +1,36 @@
 package data
 
 import (
+	"database/sql"
 	"time"
 
 	"github.com/mrojasb2000/greenlight/internal/validator"
 )
+
+// Define a MovieModel struct type which wraps a sql.DB connection pool.
+type MovieModel struct {
+	DB *sql.DB
+}
+
+// Add a placeholder method for inserting a new record in the movies table.
+func (m MovieModel) Insert(movie *Movie) error {
+	return nil
+}
+
+// Add a placeholder method for fetching a specific record from the movies table.
+func (m MovieModel) Get(i int64) (*Movie, error) {
+	return nil, nil
+}
+
+// Add a placeholder method for updating a specific record in the movies table.
+func (m MovieModel) Update(movie *Movie) error {
+	return nil
+}
+
+// Add a placeholder method for deleting a specific record from the movies table.
+func (m MovieModel) Delete(i int64) error {
+	return nil
+}
 
 // Annotate the Movie struct with struct tags to control how the keys appear in the
 // JSON-encoded output.
