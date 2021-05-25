@@ -661,3 +661,14 @@ Applying all down migrations
 2/d add_movies_check_constraints (29.759654ms)
 1/d create_movies_table (50.684902ms)
 ```
+
+### Fixing errors in SQL migrations
+What happens when you make a syntax error in your SQL migration files, then you need to manually roll-back the partially applied migration. 
+
+Once that's done, then you must also 'force' the version number in the schema_migrations table to the correct value.
+
+Once you force the version, the database is considered 'clean' and you should be able to run migrations again without any problem.
+
+```
+$ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN force 1
+```
