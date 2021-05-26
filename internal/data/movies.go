@@ -32,6 +32,28 @@ func (m MovieModel) Delete(i int64) error {
 	return nil
 }
 
+type MockMovieModel struct{}
+
+func (m MockMovieModel) Insert(movie *Movie) error {
+	// Mock the action
+	return nil
+}
+
+func (m MockMovieModel) Get(id int64) (*Movie, error) {
+	// Mock the action
+	return nil, nil
+}
+
+func (m MockMovieModel) Update(movie *Movie) error {
+	// Mock the action
+	return nil
+}
+
+func (m MockMovieModel) Delete(id int64) error {
+	// Mock the action
+	return nil
+}
+
 // Annotate the Movie struct with struct tags to control how the keys appear in the
 // JSON-encoded output.
 type Movie struct {
