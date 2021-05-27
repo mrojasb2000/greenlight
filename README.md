@@ -723,3 +723,31 @@ func main() {
   ...
 }
 ```
+
+### Implement create new movie (CRUD operations)
+```
+$ migrate -path=./migrations -database=$GREENLIGHT_DB_DSN up
+
+
+BODY='{"title":"Moana","year":2016,"runtime":"107 mins","genres":["animation","adventure"]}'
+
+curl -i -d "$BODY" localhost:4000/v1/moviesHTTP/1.1 201 Created
+Content-Type: application/json
+Location: /v1/movies/1
+Date: Thu, 27 May 2021 23:01:38 GMT
+Content-Length: 221
+
+{
+  "movie": {
+          "id": 1,
+          "title": "Moana",
+          "year": 2016,
+          "runtime": "107 mins",
+          "genres": [
+                  "animation",
+                  "adventure"
+          ],
+          "version": 1
+  }
+}
+```
