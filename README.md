@@ -826,3 +826,20 @@ $ curl -X PUT -d "$BODY" localhost:4000/v1/movies/2
   }
 }
 ```
+
+### Implement DELETE movie (CRUD operations)
+Remove movie with ID that exist in the database
+```
+$ curl -X DELETE localhost:4000/v1/movies/3
+{
+   "message": "movie successfully deleted"
+}
+```
+
+Remove movie with ID that doesn't exist in the database
+```
+$ curl -X DELETE localhost:4000/v1/movies/3
+{
+   "error": "the requested resource could not be found"
+}
+```
