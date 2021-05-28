@@ -763,15 +763,15 @@ Content-Length: 161
 
 {
   "movie": {
-          "id": 2,
-          "title": "Black Panther",
-          "year": 2018,
-          "runtime": "134 mins",
-          "genres": [
-                  "action",
-                  "adventure"
-          ],
-          "version": 1
+    "id": 2,
+    "title": "Black Panther",
+    "year": 2018,
+    "runtime": "134 mins",
+    "genres": [
+            "action",
+            "adventure"
+    ],
+    "version": 1
   }
 }
 ```
@@ -784,6 +784,6 @@ Date: Fri, 28 May 2021 02:31:23 GMT
 Content-Length: 58
 
 {
-        "error": "the requested resource could not be found"
+  "error": "the requested resource could not be found"
 }
 ```
