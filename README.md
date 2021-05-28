@@ -753,6 +753,7 @@ Content-Length: 221
 ```
 
 ### Implement read movie (CRUD operations)
+Find movie with ID that exist in the database
 ```
 $ curl -i localhost:4000/v1/movies/2 
 HTTP/1.1 200 OK
@@ -772,5 +773,17 @@ Content-Length: 161
           ],
           "version": 1
   }
+}
+```
+Find movie with ID that doesn't exist in the database
+```
+$ curl -i localhost:4000/api/v1/movies/3
+HTTP/1.1 404 Not Found
+Content-Type: application/json
+Date: Fri, 28 May 2021 02:31:23 GMT
+Content-Length: 58
+
+{
+        "error": "the requested resource could not be found"
 }
 ```
