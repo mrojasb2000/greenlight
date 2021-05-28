@@ -787,3 +787,42 @@ Content-Length: 58
   "error": "the requested resource could not be found"
 }
 ```
+
+### Implement UPDATE movie (CRUD operations)
+Find movie with ID that exist in the database
+```
+$ curl localhost:4000/v1/movies/2
+{
+  "movie": {
+          "id": 2,
+          "title": "Black Panther",
+          "year": 2018,
+          "runtime": "134 mins",
+          "genres": [
+                  "action",
+                  "adventure"
+          ],
+          "version": 1
+  }
+}
+```
+
+Update movie record by ID
+```
+$ BODY='{"title":"Black Panther","year":2018,"runtime":"134 mins","genres":["sci-fi","action","adventure"]}'
+$ curl -X PUT -d "$BODY" localhost:4000/v1/movies/2
+{
+  "movie": {
+          "id": 2,
+          "title": "Black Panther",
+          "year": 2018,
+          "runtime": "134 mins",
+          "genres": [
+                  "sci-fi",
+                  "action",
+                  "adventure"
+          ],
+          "version": 2
+  }
+}
+```
