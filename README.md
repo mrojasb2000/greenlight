@@ -751,3 +751,26 @@ Content-Length: 221
   }
 }
 ```
+
+### Implement read movie (CRUD operations)
+```
+$ curl -i localhost:4000/v1/movies/2 
+HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Fri, 28 May 2021 02:32:20 GMT
+Content-Length: 161
+
+{
+  "movie": {
+          "id": 2,
+          "title": "Black Panther",
+          "year": 2018,
+          "runtime": "134 mins",
+          "genres": [
+                  "action",
+                  "adventure"
+          ],
+          "version": 1
+  }
+}
+```
