@@ -32,7 +32,7 @@ func (m MovieModel) Insert(movie *Movie) error {
 
 	// Use the QueryRow() method to execute the SQL query on our connection pool,
 	// passing in the args slice as a variadic parameter and scanning the system
-	// generated is, created_at and version values into the movie struct
+	// generated id, created_at and version values into the movie struct
 	return m.DB.QueryRow(query, args...).Scan(&movie.ID, &movie.CreateAt, &movie.Version)
 }
 
@@ -103,7 +103,7 @@ func (m MovieModel) Delete(id int64) error {
 	WHERE id = $1`
 
 	// Execute the SQL query using the Exec() method, passing in the id variable as
-	// the value for the placeholder parameter. The Exec method returns a sql.Result
+	// the value for the placeholder parameter. The Exec() method returns a sql.Result
 	// object.
 	result, err := m.DB.Exec(query, id)
 	if err != nil {
@@ -112,7 +112,7 @@ func (m MovieModel) Delete(id int64) error {
 
 	// Call the RowsAffected() method on the sql.Result object to get number of rows
 	// affected by the query
-	rowAffected, err := result.RowsAffected()
+	rowsAffected, err := result.RowsAffected()
 	if err != nil {
 		return err
 	}
@@ -120,7 +120,7 @@ func (m MovieModel) Delete(id int64) error {
 	// If no rows were affected, we know that the movies table didn't contain a record
 	// with the provided ID at the moment we tried to delete it. In that case we
 	// return an ErrRecordNotFound error.
-	if rowAffected == 0 {
+	if rowsAffected == 0 {
 		return ErrRecordNotFound
 	}
 
