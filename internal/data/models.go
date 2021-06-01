@@ -23,6 +23,12 @@ type Models struct {
 		Delete(id int64) error
 	}
 	//Movies MovieModel
+	Books interface {
+		Insert(book *Book) error
+		Get(id int64) (*Book, error)
+		Update(book *Book) error
+		Delete(id int64) error
+	}
 }
 
 // For ease of use, we also add a New() method which returns a Models struct containing
@@ -30,6 +36,7 @@ type Models struct {
 func NewModels(db *sql.DB) Models {
 	return Models{
 		Movies: MovieModel{DB: db},
+		Books:  BookModel{DB: db},
 	}
 }
 
@@ -38,5 +45,6 @@ func NewModels(db *sql.DB) Models {
 func NewMockModels() Models {
 	return Models{
 		Movies: MovieModel{},
+		Books:  BookModel{},
 	}
 }
