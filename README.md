@@ -849,14 +849,14 @@ $ curl -X DELETE localhost:4000/v1/movies/3
 $ curl -X PATCH -d '{"year":1985}' localhost:4000/v1/movies/4
 {
   "movie": {
-          "id": 4,
-          "title": "The Breakfast Club",
-          "year": 1985,
-          "runtime": "96 mins",
-          "genres": [
-                  "drama"
-          ],
-          "version": 2
+    "id": 4,
+    "title": "The Breakfast Club",
+    "year": 1985,
+    "runtime": "96 mins",
+    "genres": [
+            "drama"
+    ],
+    "version": 2
   }
 }
 ```
