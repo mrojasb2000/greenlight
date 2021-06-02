@@ -739,15 +739,15 @@ Content-Length: 221
 
 {
   "movie": {
-          "id": 1,
-          "title": "Moana",
-          "year": 2016,
-          "runtime": "107 mins",
-          "genres": [
-                  "animation",
-                  "adventure"
-          ],
-          "version": 1
+    "id": 1,
+    "title": "Moana",
+    "year": 2016,
+    "runtime": "107 mins",
+    "genres": [
+            "animation",
+            "adventure"
+    ],
+    "version": 1
   }
 }
 ```
@@ -794,15 +794,15 @@ Find movie with ID that exist in the database
 $ curl localhost:4000/v1/movies/2
 {
   "movie": {
-          "id": 2,
-          "title": "Black Panther",
-          "year": 2018,
-          "runtime": "134 mins",
-          "genres": [
-                  "action",
-                  "adventure"
-          ],
-          "version": 1
+    "id": 2,
+    "title": "Black Panther",
+    "year": 2018,
+    "runtime": "134 mins",
+    "genres": [
+            "action",
+            "adventure"
+    ],
+    "version": 1
   }
 }
 ```
@@ -813,16 +813,16 @@ $ BODY='{"title":"Black Panther","year":2018,"runtime":"134 mins","genres":["sci
 $ curl -X PUT -d "$BODY" localhost:4000/v1/movies/2
 {
   "movie": {
-          "id": 2,
-          "title": "Black Panther",
-          "year": 2018,
-          "runtime": "134 mins",
-          "genres": [
-                  "sci-fi",
-                  "action",
-                  "adventure"
-          ],
-          "version": 2
+    "id": 2,
+    "title": "Black Panther",
+    "year": 2018,
+    "runtime": "134 mins",
+    "genres": [
+            "sci-fi",
+            "action",
+            "adventure"
+    ],
+    "version": 2
   }
 }
 ```
