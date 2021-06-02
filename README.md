@@ -859,4 +859,14 @@ $ curl -X PATCH -d '{"year":1985}' localhost:4000/v1/movies/4
     "version": 2
   }
 }
-```
+```
+
+### Performing the partial update with key/value empty
+```
+$ curl -X PATCH -d '{"title":""}' localhost:4000/v1/movies/4
+{
+  "error": {
+          "title": "must be provided"
+  }
+}
+```
