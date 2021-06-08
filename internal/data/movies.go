@@ -48,7 +48,7 @@ func (m MovieModel) Get(id int64) (*Movie, error) {
 	}
 	// Define the SQL query for retrieving the movie data.
 	query := `
-	SELECT pg_sleep(10), id, created_at, title, year, runtime, genres, version FROM movies WHERE id = $1`
+	SELECT id, created_at, title, year, runtime, genres, version FROM movies WHERE id = $1`
 
 	// Declare a Movie struct to hold the data returned by the query.
 	var movie Movie
@@ -65,7 +65,6 @@ func (m MovieModel) Get(id int64) (*Movie, error) {
 	// Use the QueryRowContext() method to execute the query, passing in the context
 	// with the deadline as the first argument.
 	err := m.DB.QueryRowContext(ctx, query, id).Scan(
-		&[]byte{},
 		&movie.ID,
 		&movie.CreateAt,
 		&movie.Title,
