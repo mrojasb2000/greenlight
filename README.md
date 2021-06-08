@@ -870,3 +870,13 @@ $ curl -X PATCH -d '{"title":""}' localhost:4000/v1/movies/4
   }
 }
 ```
+
+### Adding a query timeout
+```
+$ curl -w '\nTime: %{time_total}s \n' localhost:4000/v1/movies/1
+{
+        "error": "the server encontered a problem and could not process your request"
+}
+
+Time: 0,027932s
+```
