@@ -451,7 +451,7 @@ volumes:
 
 ### Running Database Postgres and PgAmin
 ```
-$ docker-compose up
+$ docker-compose up -d
 ```
 
 ### Remove Docker container 
@@ -491,7 +491,7 @@ CREATE EXTENSION
 
 ### Connect to databse greenlight with user greenlight
 ```
-psql --host=localhost --dbname=greenlight --username=greenlight
+psql --host=localhost --port=5432 --dbname=greenlight --username=greenlight
 Password for user greenlight:
 psql (13.3, server 13.2 (Debian 13.2-1.pgdg100+1))
 Type "help" for help
@@ -499,7 +499,7 @@ Type "help" for help
 
 ### Add environment variable to $HOME/.profile or $HOME/.bashrc or $HOME/.zshrc
 ```
-export GREENLIGHT_DB_DSN='postgres://greenlight:pa55w0rd@localhost/greenlight?sslmode=disable'
+export GREENLIGHT_DB_DSN='postgres://greenlight:pa55w0rd@localhost:5432/greenlight?sslmode=disable'
 ```
 
 ### Get help from command-line api
